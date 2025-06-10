@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, undefined } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { customSession } from "better-auth/plugins"; // Adjust the import path if customSession is defined elsewhere
 import { eq } from "drizzle-orm";
@@ -22,15 +22,17 @@ export const auth = betterAuth({
       });
 
       // TODO: Ao adaptar para o usuário ter múltiplas clínicas, deve-se mudar essa lógica
-      const clinic = clinics[0];
+      const clinic = clinics?.[0];
 
       return {
         user: {
           ...user,
-          clinic: {
-            id: clinic.clinicId,
-            name: clinic.clinic.name,
-          },
+          clinic: clinic?.clinicId
+            ? {
+                id: clinic?.clinicId,
+                name: clinic?.clinic?.name,
+              }
+            : undefined,
         },
         session,
       };
