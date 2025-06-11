@@ -11,7 +11,7 @@ import UpsertDoctorForm from "./upsert-doctor-form";
 const AddDoctorButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button>
           <Plus />
