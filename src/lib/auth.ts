@@ -1,4 +1,4 @@
-import { betterAuth, undefined } from "better-auth";
+import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { customSession } from "better-auth/plugins"; // Adjust the import path if customSession is defined elsewhere
 import { eq } from "drizzle-orm";
